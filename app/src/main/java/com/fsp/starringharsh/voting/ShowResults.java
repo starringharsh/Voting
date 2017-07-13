@@ -128,6 +128,7 @@ public class ShowResults extends AppCompatActivity implements View.OnClickListen
                     public void onResult(@NonNull Status status) {
                         Toast.makeText(ShowResults.this, "Signed Out Successfully.", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(ShowResults.this, GoogleSignInActivity.class));
+                        finish();
                     }
                 });
     }
@@ -147,6 +148,13 @@ public class ShowResults extends AppCompatActivity implements View.OnClickListen
         if (i == R.id.sign_out_button) {
             signOut();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ShowResults.this, Menu.class);
+        startActivity(intent);
+        finish();
     }
 }
 

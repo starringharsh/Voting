@@ -1,6 +1,7 @@
 package com.fsp.starringharsh.voting;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
                     public void onResult(@NonNull Status status) {
                         Toast.makeText(Menu.this, "Signed Out Successfully.", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Menu.this, GoogleSignInActivity.class));
+                        finish();
                     }
                 });
     }
@@ -87,11 +89,37 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
         if (i == R.id.bVote) {
             //cast vote activity
             startActivity(new Intent(Menu.this, Vote.class));
+            finish();
         } else if (i == R.id.bResults) {
             //view results activity
             startActivity(new Intent(Menu.this, ShowResults.class));
+            finish();
         } else if (i == R.id.sign_out_button) {
             signOut();
         }
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            // Clear your session, remove preferences, etc.
+            finish();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

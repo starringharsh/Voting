@@ -156,6 +156,7 @@ public class Vote extends AppCompatActivity implements GoogleApiClient.OnConnect
                     public void onResult(@NonNull Status status) {
                         Toast.makeText(Vote.this, "Signed Out Successfully.", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Vote.this, GoogleSignInActivity.class));
+                        finish();
                     }
                 });
     }
@@ -176,8 +177,10 @@ public class Vote extends AppCompatActivity implements GoogleApiClient.OnConnect
             if (userID == null)
                 Toast.makeText(this, "User Null", Toast.LENGTH_SHORT).show();
             String selected = ((RadioButton)findViewById(rgcand.getCheckedRadioButtonId())).getText().toString();
-            Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Thank You For Your Precious Vote.", Toast.LENGTH_SHORT).show();
             writeRef.child(userID).setValue(selected);
+            onBackPressed();
+
         } else if (i == R.id.bResults) {
             //view results activity
         } else if (i == R.id.sign_out_button) {
@@ -185,5 +188,11 @@ public class Vote extends AppCompatActivity implements GoogleApiClient.OnConnect
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Vote.this, Menu.class);
+        startActivity(intent);
+        finish();
+    }
 
 }

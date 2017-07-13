@@ -11,16 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoogleSignInActivity">
+        <activity android:name=".GoogleSignInActivity"
+            android:screenOrientation="portrait"
+            android:label="N.V.S.P.">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu" />
-        <activity android:name=".Vote" />
-        <activity android:name=".ShowResults"></activity>
+        <activity android:name=".Menu"
+            android:screenOrientation="portrait"
+            android:label="Welcome"/>
+        <activity android:name=".Vote"
+            android:screenOrientation="portrait"
+            android:label="Cast Vote"/>
+        <activity android:name=".ShowResults"
+            android:screenOrientation="portrait"
+            android:label="Results"></activity>
     </application>
 
 </manifest>

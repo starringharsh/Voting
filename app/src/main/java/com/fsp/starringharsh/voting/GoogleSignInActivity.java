@@ -40,8 +40,8 @@ public class GoogleSignInActivity extends BaseActivity implements
     // [END declare_auth]
 
     private GoogleApiClient mGoogleApiClient;
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
+    //private TextView mStatusTextView;
+    //private TextView mDetailTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class GoogleSignInActivity extends BaseActivity implements
         setContentView(R.layout.activity_google_sign_in);
 
         // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
+        //mStatusTextView = (TextView) findViewById(R.id.status);
+        //mDetailTextView = (TextView) findViewById(R.id.detail);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -180,16 +180,16 @@ public class GoogleSignInActivity extends BaseActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+            //mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
+            //mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
             startActivity(new Intent(GoogleSignInActivity.this, Menu.class));
             finish();
         } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
+            //mStatusTextView.setText(R.string.signed_out);
+            //mDetailTextView.setText(null);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);

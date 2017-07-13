@@ -28,6 +28,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        System.out.println("Menu");
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -43,6 +45,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
 
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.bVote).setOnClickListener(this);
+        findViewById(R.id.bResults).setOnClickListener(this);
 
 
     }
@@ -86,6 +89,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
             startActivity(new Intent(Menu.this, Vote.class));
         } else if (i == R.id.bResults) {
             //view results activity
+            startActivity(new Intent(Menu.this, ShowResults.class));
         } else if (i == R.id.sign_out_button) {
             signOut();
         }

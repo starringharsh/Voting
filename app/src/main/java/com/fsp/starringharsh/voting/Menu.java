@@ -89,9 +89,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
+        startActivity(new Intent(Menu.this, PhoneAuthActivity.class));
+        finish();
 
         // Google sign out
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+        /*Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
@@ -99,7 +101,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Goo
                         startActivity(new Intent(Menu.this, GoogleSignInActivity.class));
                         finish();
                     }
-                });
+                });*/
     }
 
     @Override

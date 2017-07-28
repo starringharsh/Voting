@@ -148,9 +148,11 @@ public class Vote extends AppCompatActivity implements GoogleApiClient.OnConnect
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
+        startActivity(new Intent(Vote.this, PhoneAuthActivity.class));
+        finish();
 
         // Google sign out
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+        /*Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
@@ -158,7 +160,7 @@ public class Vote extends AppCompatActivity implements GoogleApiClient.OnConnect
                         startActivity(new Intent(Vote.this, GoogleSignInActivity.class));
                         finish();
                     }
-                });
+                });*/
     }
 
     @Override

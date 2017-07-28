@@ -120,9 +120,11 @@ public class ShowResults extends AppCompatActivity implements View.OnClickListen
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
+        startActivity(new Intent(ShowResults.this, PhoneAuthActivity.class));
+        finish();
 
         // Google sign out
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+        /*Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
@@ -130,7 +132,7 @@ public class ShowResults extends AppCompatActivity implements View.OnClickListen
                         startActivity(new Intent(ShowResults.this, GoogleSignInActivity.class));
                         finish();
                     }
-                });
+                });*/
     }
 
     @Override
